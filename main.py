@@ -19,10 +19,7 @@ while True:
     data = pd.read_csv("50_states.csv")
     states_name = data.state.to_list()
     if user_answer == "Exit":
-        remaining_states =[]
-        for state in states_name:
-            if state not in guessed_states:
-                remaining_states.append(state)
+        remaining_states =[state for state in states_name if state not in guessed_states]
         remaining_df = pd.DataFrame(remaining_states)
         remaining_df.to_csv("left_out_states.csv")
         break
